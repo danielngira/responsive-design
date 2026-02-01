@@ -44,6 +44,7 @@ body{
 
 /* Dot field fills the top area; lockup occupies bottom-left */
 .dot-field{
+  /*
   position: absolute;
   left: var(--pad);
   right: var(--pad);
@@ -54,6 +55,14 @@ body{
   gap: var(--gap);
   align-content: start;
   justify-items: center;
+  overflow: hidden;*/
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+  gap: var(--gap);
+  align-content: start;
+  justify-items: center;
+
+  overflow: hidden;
 }
 
 .dot{
@@ -73,6 +82,7 @@ body{
 }
 
 .lockup-area{
+  /*
   position: absolute;
   left: var(--pad);
   right: var(--pad);
@@ -81,6 +91,9 @@ body{
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  gap: 10px;*/
+  display: flex;
+  flex-direction: column;
   gap: 10px;
 }
 
