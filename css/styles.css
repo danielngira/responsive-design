@@ -1,19 +1,17 @@
 :root{
-  --bg: #3b3b3b;             /* poster background */
-  --dot: #f2f2f2;            /* dot color */
-  --text: #f2f2f2;           /* main text */
+  --bg: #3b3b3b;            
+  --dot: #f2f2f2;           
+  --text: #f2f2f2;          
   --muted: rgba(242,242,242,.65);
 
-  /* Poster sizing: scales with viewport but caps nicely */
   --poster-w: min(100vw, calc(100vh / 1.414));
   --pad: clamp(18px, 4vw, 48px);
 
-  /* Dot field geometry */
-  --cols: 10;                /* number of dots per row */
+  --cols: 10;               
   --gap: clamp(18px, 4.4vw, 44px);
   --top-space: clamp(40px, 7vw, 90px); 
-  --gap-lockup: clamp(24px, 3vh, 40px);   /* distance between dots and text */
-  --lockup-h: clamp(150px, 18vh, 220px);  /* space reserved for title+subtitle+footer */
+  --gap-lockup: clamp(24px, 3vh, 40px);   
+  --lockup-h: clamp(150px, 18vh, 220px);  
 }
 
 *{ box-sizing: border-box; }
@@ -32,7 +30,6 @@ body{
   height: 100vh;
   background: var(--bg);
   color: var(--text);
-  /*position: relative;*/
   overflow: hidden;
   
   display: grid;
@@ -42,20 +39,7 @@ body{
   
 }
 
-/* Dot field fills the top area; lockup occupies bottom-left */
 .dot-field{
-  /*
-  position: absolute;
-  left: var(--pad);
-  right: var(--pad);
-  top: var(--top-space);
-  bottom: calc(var(--lockup-h) + var(--gap-lockup));
-  display: grid;
-  grid-template-columns: repeat(var(--cols), 1fr);
-  gap: var(--gap);
-  align-content: start;
-  justify-items: center;
-  overflow: hidden;*/
   display: grid;
   grid-template-columns: repeat(var(--cols), 1fr);
   gap: var(--gap);
@@ -73,25 +57,13 @@ body{
   opacity: .98;
 }
 
-/* Bottom-left text lockup */
 .lockup{
-  /*position: absolute;*/
   position: static;
   left: var(--pad);
   bottom: clamp(80px, 10vw, 120px);
 }
 
 .lockup-area{
-  /*
-  position: absolute;
-  left: var(--pad);
-  right: var(--pad);
-  bottom: var(--pad);
-  height: var(--lockup-h);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 10px;*/
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -102,7 +74,7 @@ body{
   margin: 0;
   display: flex;
   align-items: center;
-  gap: clamp(8px, 1.6vw, 14px);     /* tracking between letters */
+  gap: clamp(8px, 1.6vw, 14px);     
   font-weight: 600;
   letter-spacing: 0.02em;
   font-size: clamp(28px, 4.8vw, 44px);
@@ -111,7 +83,6 @@ body{
 
 .title span{ display: inline-block; }
 
-/* Make the O be a dot like the poster */
 .title .o{
   display: inline-block;
   flex: 0 0 auto;
@@ -124,7 +95,6 @@ body{
   top: 0.06em; 
 }
 
-/* Subtitle + footer */
 .subtitle{
   margin: 14px 0 0 0;
   font-size: clamp(14px, 2.2vw, 18px);
@@ -132,7 +102,6 @@ body{
 }
 
 .footer{
-  /*position: absolute;*/
   position: static;
   left: var(--pad);
   bottom: clamp(20px, 3.5vw, 36px);
@@ -140,7 +109,6 @@ body{
   color: rgba(242,242,242,.55);
 }
 
-/* Responsive adjustment: on very narrow screens, reduce columns so dots stay spaced */
 @media (max-width: 420px){
   :root{
     --cols: 8;
