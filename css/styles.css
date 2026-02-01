@@ -11,7 +11,9 @@
   /* Dot field geometry */
   --cols: 10;                /* number of dots per row */
   --gap: clamp(18px, 4.4vw, 44px);
-  --top-space: clamp(40px, 7vw, 90px); /* breathing room at top */
+  --top-space: clamp(40px, 7vw, 90px); 
+  --gap-lockup: clamp(24px, 3vh, 40px);   /* distance between dots and text */
+  --lockup-h: clamp(150px, 18vh, 220px);  /* space reserved for title+subtitle+footer */
 }
 
 *{ box-sizing: border-box; }
@@ -26,16 +28,18 @@ body{
 }
 
 .poster{
-  /*width: var(--poster-w);*/
-  /*height: calc(var(--poster-w) * 1.414);*/
   width: 100vw;
   height: 100vh;
   background: var(--bg);
   color: var(--text);
-  position: relative;
+  /*position: relative;*/
   overflow: hidden;
-  /*border-radius: 18px;*/
-  box-shadow: 0 24px 80px rgba(0,0,0,.45);
+  
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding: var(--pad);
+  gap: var(--gap-lockup);
+  
 }
 
 /* Dot field fills the top area; lockup occupies bottom-left */
@@ -44,7 +48,7 @@ body{
   left: var(--pad);
   right: var(--pad);
   top: var(--top-space);
-  bottom: clamp(170px, 22vw, 220px);  /* reserve space for text lockup */
+  bottom: calc(var(--lockup-h) + var(--gap-lockup));
   display: grid;
   grid-template-columns: repeat(var(--cols), 1fr);
   gap: var(--gap);
@@ -62,10 +66,24 @@ body{
 
 /* Bottom-left text lockup */
 .lockup{
-  position: absolute;
+  /*position: absolute;*/
+  position: static;
   left: var(--pad);
   bottom: clamp(80px, 10vw, 120px);
 }
+
+.lockup-area{
+  position: absolute;
+  left: var(--pad);
+  right: var(--pad);
+  bottom: var(--pad);
+  height: var(--lockup-h);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
 
 .title{
   margin: 0;
@@ -101,7 +119,8 @@ body{
 }
 
 .footer{
-  position: absolute;
+  /*position: absolute;*/
+  position: static;
   left: var(--pad);
   bottom: clamp(20px, 3.5vw, 36px);
   font-size: clamp(12px, 1.8vw, 14px);
