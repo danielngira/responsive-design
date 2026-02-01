@@ -5,7 +5,7 @@
   --muted: rgba(242,242,242,.65);
 
   /* Poster sizing: scales with viewport but caps nicely */
-  --poster-w: min(92vw, 720px);
+  --poster-w: min(100vw, calc(100vh / 1.414));
   --pad: clamp(18px, 4vw, 48px);
 
   /* Dot field geometry */
@@ -26,13 +26,15 @@ body{
 }
 
 .poster{
-  width: var(--poster-w);
-  aspect-ratio: 1 / 1.414;          /* A4-ish poster ratio */
+  /*width: var(--poster-w);*/
+  /*height: calc(var(--poster-w) * 1.414);*/
+  width: 100vw;
+  height: 100vh;
   background: var(--bg);
   color: var(--text);
   position: relative;
   overflow: hidden;
-  border-radius: 18px;
+  /*border-radius: 18px;*/
   box-shadow: 0 24px 80px rgba(0,0,0,.45);
 }
 
@@ -51,8 +53,8 @@ body{
 }
 
 .dot{
-  width: calc(var(--s) * 1px);
-  height: calc(var(--s) * 1px);
+  width: calc(var(--s) * 0.08rem);
+  height: calc(var(--s) * 0.08rem);
   background: var(--dot);
   border-radius: 999px;
   opacity: .98;
